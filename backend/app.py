@@ -161,3 +161,8 @@ def get_all_eda_graphs():
         "top_countries": top_countries,
         "attack_types": attack_types,
     }
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="127.0.0.1", port=8000)
