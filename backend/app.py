@@ -15,7 +15,7 @@ app.add_middleware(
 
 # Load and preprocess data
 # df = pd.read_csv("globalterrorismdb_0718dist.csv", encoding="ISO-8859-1")
-path_to_dataset = "backend/globalterrorismdb_0718dist.zip"
+path_to_dataset = "globalterrorismdb_0718dist.zip"
 with zipfile.ZipFile(path_to_dataset, "r") as z:
     # List all the files in the ZIP archive
     file_names = z.namelist()
