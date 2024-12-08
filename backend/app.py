@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 from scipy.stats import ttest_ind
-
+import zipfile
 app = FastAPI()
 
 app.add_middleware(
@@ -14,7 +14,18 @@ app.add_middleware(
 )
 
 # Load and preprocess data
-df = pd.read_csv("globalterrorismdb_0718dist.csv", encoding="ISO-8859-1")
+# df = pd.read_csv("globalterrorismdb_0718dist.csv", encoding="ISO-8859-1")
+path_to_dataset = "backend/globalterrorismdb_0718dist.zip"
+with zipfile.ZipFile(path_to_dataset, "r") as z:
+    # List all the files in the ZIP archive
+    file_names = z.namelist()
+
+    # Assuming there's only one CSV file in the ZIP
+    csv_file_name = [name for name in file_names if name.endswith(".csv")][0]
+
+    # Open the CSV file directly
+    with z.open(csv_file_name) as f:
+        df = pd.read_csv(f, encoding="ISO-8859-1")
 df = df.rename(
     columns={
         "iyear": "Year",

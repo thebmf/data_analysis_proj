@@ -36,7 +36,7 @@ def load_data():
         # Open the CSV file directly
         with z.open(csv_file_name) as f:
             df = pd.read_csv(f, encoding="ISO-8859-1")
-    df = pd.read_csv(path_to_dataset, encoding="ISO-8859-1")
+    # df = pd.read_csv(path_to_dataset, encoding="ISO-8859-1")
     df = df[
         [
             "iyear",
